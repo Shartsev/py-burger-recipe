@@ -3,10 +3,10 @@ from typing import Any
 
 
 class Validator(ABC):
-    def __set_name__(self, owner: BurgerRecipe, name: str) -> None:
+    def __set_name__(self, owner: type, name: str) -> None:
         self.protected_name = "_" + name
 
-    def __get__(self, instance: object, owner: BurgerRecipe) -> int:
+    def __get__(self, instance: object, owner: type) -> int:
         return getattr(instance, self.protected_name)
 
     def __set__(self, instance: object, value: str | int) -> None:
